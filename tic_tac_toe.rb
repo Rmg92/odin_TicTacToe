@@ -4,7 +4,7 @@ require 'pry-byebug'
 
 # Stores winning conditions
 module Win
-  WINNINGCONDITIONS = [1, 2, 3].freeze
+  WINNINGCOMBINATIONS = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]].freeze
 end
 
 # Creates a new player
@@ -20,7 +20,7 @@ end
 class Game
 end
 
-# contains the elements to create a new board
+# Contains the elements to create a new board
 class Board
   def board
     puts '1 | 2 | 3'
