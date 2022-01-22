@@ -22,12 +22,25 @@ end
 
 # Contains the elements to create a new board
 class Board
+  def initialize
+    @pos1 = '1'
+    @pos2 = '2'
+    @pos3 = '3'
+    @pos4 = '4'
+    @pos5 = '5'
+    @pos6 = '6'
+    @pos7 = '7'
+    @pos8 = '8'
+    @pos9 = '9'
+  end
+
   def board
-    puts '1 | 2 | 3'
+    # binding.pry
+    puts "#{@pos1} | #{@pos2} | #{@pos3}"
     puts '- + - + -'
-    puts '4 | 5 | 6'
+    puts "#{@pos4} | #{@pos5} | #{@pos6}"
     puts '- + - + -'
-    puts '7 | 8 | 9'
+    puts "#{@pos7} | #{@pos8} | #{@pos9}"
   end
 end
 
