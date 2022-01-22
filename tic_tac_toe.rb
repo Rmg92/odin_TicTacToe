@@ -18,38 +18,29 @@ end
 
 # Contains all the game logic
 class Game
-end
-
-# Contains the elements to create a new board
-class Board
-  def initialize
-    @pos1 = '1'
-    @pos2 = '2'
-    @pos3 = '3'
-    @pos4 = '4'
-    @pos5 = '5'
-    @pos6 = '6'
-    @pos7 = '7'
-    @pos8 = '8'
-    @pos9 = '9'
+  def initialize(player_class)
+    puts "What's your name player 1?"
+    player1_name = gets.chomp
+    puts "What's your name player 2?"
+    player2_name = gets.chomp
+    @players = [player_class.new(player1_name), player_class.new(player2_name)]
+    play
   end
 
-  def board
-    # binding.pry
-    puts "#{@pos1} | #{@pos2} | #{@pos3}"
+  def print_board(position, marker)
+    board_positions = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    board_positions[position] = marker
+    puts "#{board_positions[0]} | #{board_positions[1]} | #{board_positions[2]}"
     puts '- + - + -'
-    puts "#{@pos4} | #{@pos5} | #{@pos6}"
+    puts "#{board_positions[3]} | #{board_positions[4]} | #{board_positions[5]}"
     puts '- + - + -'
-    puts "#{@pos7} | #{@pos8} | #{@pos9}"
+    puts "#{board_positions[6]} | #{board_positions[7]} | #{board_positions[8]}"
+  end
+
+  def play
+    puts @players[1].name
+    print_board(0, 'X')
   end
 end
 
-# puts 'Enter player 1 name'
-# player1 = Player.new(gets.chomp)
-# puts 'Enter player 2 name'
-# player2 = Player.new(gets.chomp)
-
-# puts player1.name, player2.name
-
-board = Board.new
-puts board.board
+Game.new(Player)
