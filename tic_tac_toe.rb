@@ -63,7 +63,7 @@ class Game
       if @position.between?(1, 9) && @board_positions.any?(@position)
         round
       else
-        puts 'Wrong selection!'
+        puts 'Invalid selection!'
         play
       end
     end
@@ -87,13 +87,27 @@ class Game
 
   def check_winner
     winning_combinattions = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
-    if @round_number == 10 && @winner == false
-      puts "It's a Draw"
-    elsif winning_combinattions.any? do |combination|
-            (combination - @players[change_player(@round_number)].check_positions).empty?
-          end
+    if winning_combinattions.any? do |combination|
+      (combination - @players[change_player(@round_number)].check_positions).empty?
+    end
       puts "#{@players[change_player(@round_number)].name} wins the game!"
-      @winner = true
+      play_again
+    elsif @round_number == 9 && @winner == false
+      puts "It's a Draw"
+      play_again
+    end
+  end
+
+  def play_again
+    puts 'Insert Y if you want to play again, Insert N to quit!'
+    case gets.chomp
+    when 'Y'
+      Game.new
+    when 'N'
+      exit
+    else
+      puts 'Invalid Selection!'
+      play_again
     end
   end
 end
