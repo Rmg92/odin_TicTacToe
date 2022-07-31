@@ -79,8 +79,8 @@ class Game
   end
 
   def check_winner
-    winning_combinattions = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
-    if winning_combinattions.any? do |combination|
+    winning_combinations = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
+    if winning_combinations.any? do |combination|
       (combination - @players[change_player(@round_number)].check_positions).empty?
     end
       puts "#{@players[change_player(@round_number)].name} wins the game!"
