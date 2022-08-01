@@ -6,9 +6,7 @@ class Game
     @board_positions = Array.new(9) { |i| i + 1 }
     @round_number = 1
     @winner = false
-    create_players
-    print_board(0, 1)
-    play
+    @players = []
   end
 
   def create_players
@@ -31,6 +29,8 @@ class Game
   end
 
   def play
+    create_players
+    print_board(0, 1)
     until @round_number == 10 || @winner
       puts "It's your turn #{@players[change_player(@round_number)].name}, choose a position!"
       @position = gets.to_i
@@ -38,7 +38,6 @@ class Game
         round
       else
         puts 'Invalid selection!'
-        play
       end
     end
   end
@@ -62,8 +61,8 @@ class Game
   def check_winner
     winning_combinations = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
     if winning_combinations.any? do |combination|
-      (combination - @players[change_player(@round_number)].check_positions).empty?
-    end
+         (combination - @players[change_player(@round_number)].check_positions).empty?
+       end
       puts "#{@players[change_player(@round_number)].name} wins the game!"
       play_again
     elsif @round_number == 9 && @winner == false

@@ -3,4 +3,5 @@
 require_relative 'game'
 require_relative 'player'
 
-Game.new
+game = Game.new
+game.play
